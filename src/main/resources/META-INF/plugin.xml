@@ -1,0 +1,49 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+
+    <id>si.deno.cyrlat</id>
+    <name>cyrillic-converter</name>
+    <version>1.2</version>
+    <vendor email="denis.zganec@gmail.com" url="">Deno</vendor>
+
+    <description>
+        <![CDATA[
+            Plugin converts selected latin text to Serbian Cyrillic or Serbian Cyrillic to latin.
+        ]]>
+    </description>
+
+    <change-notes>
+        <![CDATA[
+          <b>Actions:</b>
+          <ul>
+            <li>Convert text to Serbian Cyrillic</li>
+            <li>Convert text to latin</li>
+          </ul>
+          <b>Usage:</b> select text and select action via context menu or Edit menu in <i>Serbian Cyrillic Converter</i> submenu. Keymap shortcuts are not defined.
+          <br><br>
+          Text converter implemented by: <a href="https://github.com/kukicmilorad">Milorad Kukić</a>.
+        ]]>
+    </change-notes>
+
+    <!-- Product and plugin compatibility requirements. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+        <group id="cyrillic-converter" text="Serbian Cyrillic Converter" popup="true" icon="/images/C16.png">
+            <action id="EditorBasics.ConvertLatinToSerbianCyrillic" class="si.deno.cyrlat.converters.ConvertToSerbianCyrillic" text="To Cyrillic"
+                    description="Converts selected text to Serbian Cyrillic" icon="/images/C16.png">
+                <!--<keyboard-shortcut keymap="$default" first-keystroke="ctrl shift c"/>-->
+            </action>
+            <action id="EditorBasics.ConvertSerbianCyrillicToLatin" class="si.deno.cyrlat.converters.ConvertSerbianCyrillicToLatin" text="To Latin"
+                    description="Converts selected Serbian Cyrillic text to latin" icon="/images/L16.png">
+            </action>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditMenu" anchor="last"/>
+        </group>
+    </actions>
+    
+</idea-plugin>
