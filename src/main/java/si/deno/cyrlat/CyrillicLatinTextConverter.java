@@ -55,17 +55,17 @@ public class CyrillicLatinTextConverter {
     /**
      * Mapping of cyrillic characters to latin characters.
      */
-    static Map<Character, String> cyrMapping = new HashMap<Character, String>();
+    static Map<Character, String> cyrMapping = new HashMap<>();
     /**
      * Mapping of latin characters to cyrillic characters.
      */
-    static Map<String, Character> latMapping = new HashMap<String, Character>();
+    static Map<String, Character> latMapping = new HashMap<>();
 
     // Static initialization of mappings between cyrillic and latin letters.
     static {
         for (int i = 0; i < cyrilic.length; i++) {
-            cyrMapping.put(new Character(cyrilic[i]), latin[i]);
-            latMapping.put(latin[i], new Character(cyrilic[i]));
+            cyrMapping.put(Character.valueOf(cyrilic[i]), latin[i]);
+            latMapping.put(latin[i], Character.valueOf(cyrilic[i]));
         }
     }
 
@@ -115,7 +115,7 @@ public class CyrillicLatinTextConverter {
         StringBuffer latinBuffer = new StringBuffer();
         for (int i = 0; i < cyrBuffer.length(); i++) {
             char c = cyrBuffer.charAt(i);
-            Character character = new Character(c);
+            Character character = Character.valueOf(c);
             if (cyrMapping.containsKey(character)) {
                 latinBuffer.append(cyrMapping.get(character));
             } else {

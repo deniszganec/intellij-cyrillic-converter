@@ -12,7 +12,6 @@ import com.intellij.openapi.project.Project;
 /**
  * Implementation of a converter action.
  *
- * @version 1.0
  * @author: Denis Žganec
  */
 public abstract class AbstractConverter extends AnAction {
@@ -32,12 +31,7 @@ public abstract class AbstractConverter extends AnAction {
 
         //Making the replacement
         if (selectedText != null && selectedText.length() > 0) {
-            WriteCommandAction.runWriteCommandAction(project, new Runnable() {
-                @Override
-                public void run() {
-                    document.replaceString(start, end, convert(selectedText));
-                }
-            });
+            WriteCommandAction.runWriteCommandAction(project, () -> document.replaceString(start, end, convert(selectedText)));
             selectionModel.removeSelection();
         }
     }

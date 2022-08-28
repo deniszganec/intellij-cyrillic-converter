@@ -33,13 +33,13 @@
     </extensions>
 
     <actions>
-        <group id="cyrillic-converter" text="Serbian Cyrillic Converter" popup="true" icon="/images/C16.png">
-            <action id="EditorBasics.ConvertLatinToSerbianCyrillic" class="si.deno.cyrlat.converters.ConvertToSerbianCyrillic" text="To Cyrillic"
-                    description="Converts selected text to Serbian Cyrillic" icon="/images/C16.png">
+        <group id="cyrillic-converter" text="Serbian Cyrillic Converter" popup="true" icon="/images/Cyrillic-TS.svg">
+            <action id="EditorBasics.ConvertLatinToSerbianCyrillic" class="si.deno.cyrlat.converters.LatinToSerbianCyrillicConverter" text="To Cyrillic"
+                    description="Converts selected text to Serbian Cyrillic" icon="/images/Cyrillic-TS.svg">
                 <!--<keyboard-shortcut keymap="$default" first-keystroke="ctrl shift c"/>-->
             </action>
-            <action id="EditorBasics.ConvertSerbianCyrillicToLatin" class="si.deno.cyrlat.converters.ConvertSerbianCyrillicToLatin" text="To Latin"
-                    description="Converts selected Serbian Cyrillic text to latin" icon="/images/L16.png">
+            <action id="EditorBasics.ConvertSerbianCyrillicToLatin" class="si.deno.cyrlat.converters.SerbianCyrillicToLatinConverter" text="To Latin"
+                    description="Converts selected Serbian Cyrillic text to latin" icon="/images/Cyrillic-A.svg">
             </action>
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <add-to-group group-id="EditMenu" anchor="last"/>
