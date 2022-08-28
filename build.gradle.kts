@@ -1,10 +1,18 @@
+import org.jetbrains.changelog.markdownToHTML
+
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
+    // Java support
     id("java")
+    // Kotlin support
+    id("org.jetbrains.kotlin.jvm") version "1.7.10"
+    // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.8.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.1"
+    // Gradle Qodana Plugin
+//    id("org.jetbrains.qodana") version "0.1.13"
 }
 
 group = properties("pluginGroup")
@@ -23,6 +31,11 @@ intellij {
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
     plugins.set(properties("platformPlugins").split(',').map(String::trim).filter(String::isNotEmpty))
+}
+
+changelog {
+    version.set(properties("pluginVersion"))
+    groups.set(emptyList())
 }
 
 tasks {
@@ -54,13 +67,13 @@ tasks {
 //                    subList(indexOf(start) + 1, indexOf(end))
 //                }.joinToString("\n").run { markdownToHTML(this) }
 //        )
-//
-//        // Get the latest available change notes from the changelog file
-//        changeNotes.set(provider {
-//            changelog.run {
-//                getOrNull(properties("pluginVersion")) ?: getLatest()
-//            }.toHTML()
-//        })
+
+        // Get the latest available change notes from the changelog file
+        changeNotes.set(provider {
+            changelog.run {
+                getOrNull(properties("pluginVersion")) ?: getLatest()
+            }.toHTML()
+        })
     }
 
     signPlugin {
